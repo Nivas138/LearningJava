@@ -1,0 +1,35 @@
+public class MyClass {
+    
+    public boolean isPrime(int n){
+        if(n == 0 || n == 1){
+            return false;
+        }else if(n == 2){
+            return true;
+        }else if(n % 2 == 0){
+            return false;
+        }else{
+            for(int k=3;k <= Math.sqrt(n);k+=2){
+                if(n % k == 0){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    public static void main(String args[]) {
+        MyClass mt = new MyClass();
+        int N = 333;
+        String ip = Integer.toString(N);
+        int[] num = new int[ip.length()];
+        int count = 0,sum = 0;
+        for(int i=0;i<ip.length();i++){
+            if(mt.isPrime(Integer.parseInt(Character.toString(ip.charAt(i))))){
+                num[count++] = Integer.parseInt(Character.toString(ip.charAt(i)));
+            }
+        }
+        for(int i : num){
+            sum += i;
+        }
+        System.out.println("Output : "+sum);
+    }
+}
