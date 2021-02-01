@@ -4,15 +4,20 @@ class Node{
     Node next;
 }
 public class MyClass {
-    Node head;
-    public void addFirst(int value){
+    Node front = null , rear = null;
+    public void enqueue(int value){
         Node newNode = new Node();
         newNode.data = value;
-        newNode.next = head;
-        head = newNode;
+        newNode.next = null;
+        if(front == null && rear == null){
+            front = rear = newNode;
+        }else{
+            rear.next = newNode;
+            rear = newNode;
+        }
     }
     public int search(int freq){
-        Node temp = head;
+        Node temp = front;
         int frequency = 0;
         while(temp != null){
             if(temp.data == freq){
@@ -28,7 +33,7 @@ public class MyClass {
         int[] M = {1, 3, 2, 7, 4};
         Hashtable<Integer,Integer> ht = new Hashtable<>();
         for(int k : N){
-            mt.addFirst(k);
+            mt.enqueue(k);
         }
         for(int j : M){
             int count = 0;
